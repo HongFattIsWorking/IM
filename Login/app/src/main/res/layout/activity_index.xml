@@ -4,21 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Index">
+
     <FrameLayout
-        android:id="@+id/fc"
+        android:id="@+id/indexfc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/indexbn">
+
+    </FrameLayout>
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/indexbn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/bn"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/indexmenu"
+        android:background="?android:attr/windowBackground"
+
         />
 
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/bn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?android:attr/windowBackground"
-        android:padding="5dp"
-        app:menu="@menu/validationmenu">
 
-    </android.support.design.widget.BottomNavigationView>
 </RelativeLayout>
