@@ -1,36 +1,22 @@
 package example.com.login;
 
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.Toast;
 
-import org.json.JSONObject;
-import org.json.JSONStringer;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
-public class MainActivity extends AppCompatActivity
-{
-
+public class Index extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        BottomNavigationView bottomNav = findViewById(R.id.bn);
+        setContentView(R.layout.activity_index);
+
+        BottomNavigationView bottomNav = findViewById(R.id.indexbn);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
-        //ButterKnife.bind(this);
     }
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -38,24 +24,25 @@ public class MainActivity extends AppCompatActivity
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     Fragment selectedFragment = null;
                     switch (item.getItemId()){
-                        case R.id.nav_login:
-                            selectedFragment = new login_fragment();
+                        case R.id.nav_index:
+                            selectedFragment = new Index_Fragment();
                             break;
-                        case R.id.nav_register:
-                            selectedFragment = new register_fragment();
+                        case R.id.nav_trips:
+                            selectedFragment = new Trips_fragment();
                             break;
+                        case R.id.nav_strips:
+                            selectedFragment = new ShareTrips_Fragment();
+                            break;
+                        case R.id.nav_profile:
+                            selectedFragment = new Profile_Fragment();
+                            break;
+
                     }
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fc,
+
+                    getSupportFragmentManager().beginTransaction().replace(R.id.indexfc,
                             selectedFragment).commit();
 
                     return true;
                 }
             };
 }
-
-
-
-
-
-
-
