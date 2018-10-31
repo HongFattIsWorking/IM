@@ -6,10 +6,12 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONObject;
@@ -33,10 +35,23 @@ public class login_fragment extends Fragment implements OnTaskCompleted{
     @BindView(R.id.txtPassword)
     EditText etPassword;
 
+    @BindView(R.id.tvForgetPw)
+    TextView tvForget;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.login_fragment, container, false);
+
+        TextView clickTextView = (TextView) view.findViewById(R.id.tvForgetPw);
+        clickTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), Index.class);
+                startActivity(intent);
+            }
+        });
+
         final Button submitButton = (Button) view.findViewById(R.id.btnSubmit);
         ButterKnife.bind(this, view);
 

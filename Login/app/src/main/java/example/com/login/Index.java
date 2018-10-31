@@ -6,6 +6,9 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.TextView;
 
 public class Index extends AppCompatActivity {
 
@@ -16,6 +19,7 @@ public class Index extends AppCompatActivity {
 
         BottomNavigationView bottomNav = findViewById(R.id.indexbn);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
+        getSupportFragmentManager().beginTransaction().replace(R.id.indexfc,new Index_Fragment()).commit();
 
     }
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
@@ -45,4 +49,5 @@ public class Index extends AppCompatActivity {
                     return true;
                 }
             };
+
 }
