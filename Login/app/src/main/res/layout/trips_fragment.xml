@@ -1,14 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:background="@color/colorAccent"
-    android:layout_height="match_parent">
-
-    <TextView
-        android:layout_width="wrap_content"
+    android:background="@drawable/background_color"
+    android:layout_height="match_parent"
+ >
+    <android.support.design.widget.AppBarLayout
+        android:theme="@style/AppTheme"
+        android:id="@+id/toolbar"
+        android:background="#00000000"
+        android:paddingTop="8dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="trips Fragment"
-        android:textSize="30sp"
-        android:layout_centerInParent="true"
+        android:minHeight="?attr/actionBarSize">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tlTrips"
+            android:background="#00000000"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            app:tabSelectedTextColor="@color/colorWhite"
+            app:tabTextColor="@color/colorWhite"
+
+            />
+    </android.support.design.widget.AppBarLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vpTrips"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+
         />
 </RelativeLayout>
