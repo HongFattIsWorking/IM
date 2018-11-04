@@ -4,151 +4,95 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:padding="10dp"
+    >
 
-    android:padding="10dp">
-    <TableLayout
+
+    <EditText
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
+        android:id="@+id/txtEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:stretchColumns="2"
-        android:layout_marginBottom="5dp">
-        <TableRow android:layout_marginBottom="5dp">
-            <TextView
-                android:id="@+id/name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Name :"
-                android:textSize="20sp"
-                android:textColor="@color/colorWhite"
-                />
+        android:ems="10"
+        android:padding="15dp"
+        android:hint="Email"
+        android:background="@drawable/textbox_style"
+        android:inputType="textEmailAddress"
+        android:drawableLeft="@drawable/ic_home_black_24dp"
+        android:drawablePadding="5dp"
+        android:drawableTint="@color/greyScale"
+        android:backgroundTint="@color/greyScaleLighter"/>
 
-            <EditText
-                android:id="@+id/txtName"
-                android:layout_width="wrap_content"
-                android:layout_height="45dp"
-                android:layout_weight="1"
-                android:ems="10"
-                android:padding="10dp"
-                android:inputType="text"
-                android:background="@drawable/textbox_style"/>
-        </TableRow>
-        <TableRow android:layout_marginBottom="5dp">
+    <EditText
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
+        android:id="@+id/txtName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:padding="15dp"
+        android:background="@drawable/textbox_style"
+        android:inputType="textPassword"
+        android:hint="Name"
+        android:drawableLeft="@drawable/ic_lock_black_24dp"
+        android:drawableTint="@color/greyScale"
+        android:drawablePadding="5dp"
+        android:backgroundTint="@color/greyScaleLighter"
+        />
+    <EditText
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
+        android:id="@+id/txtPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:padding="15dp"
+        android:background="@drawable/textbox_style"
+        android:inputType="textPassword"
+        android:hint="Password"
+        android:drawableLeft="@drawable/ic_lock_black_24dp"
+        android:drawableTint="@color/greyScale"
+        android:drawablePadding="5dp"
+        android:backgroundTint="@color/greyScaleLighter"
+        />
 
-            <TextView
-                android:id="@+id/email"
-                android:layout_width="133dp"
-                android:layout_height="wrap_content"
-                android:text="Email :"
+    <EditText
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
+        android:id="@+id/txtconfirmPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:padding="15dp"
+        android:background="@drawable/textbox_style"
+        android:inputType="textPassword"
+        android:hint="Confirm Password"
+        android:drawableLeft="@drawable/ic_lock_black_24dp"
+        android:drawableTint="@color/greyScale"
+        android:drawablePadding="5dp"
+        android:backgroundTint="@color/greyScaleLighter"
+        />
 
-                android:textSize="20sp"
-                android:textColor="@color/colorWhite"/>
 
-            <EditText
-                android:id="@+id/txtEmail"
-                android:layout_width="wrap_content"
-                android:layout_height="45dp"
-                android:layout_weight="1"
-                android:ems="10"
-                android:padding="10dp"
-                android:inputType="textEmailAddress"
-                android:background="@drawable/textbox_style"
-                />
-        </TableRow>
-        <TableRow android:layout_marginBottom="5dp">
-            <TextView
-                android:id="@+id/password"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Password :"
-                android:textColor="@color/colorWhite"
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/txtpassword"
-                android:layout_width="wrap_content"
-                android:layout_height="45dp"
-                android:padding="10dp"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPassword"
-                android:background="@drawable/textbox_style"
-                />
-        </TableRow>
-        <TableRow android:layout_marginBottom="5dp">
-            <TextView
-                android:id="@+id/age"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Age :"
-                android:textColor="@color/colorWhite"
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/txtAge"
-                android:layout_width="wrap_content"
-                android:layout_height="45dp"
-                android:layout_weight="1"
-                android:ems="10"
-                android:padding="10dp"
-                android:background="@drawable/textbox_style"
-                android:inputType="number"
-                tools:layout_editor_absoluteX="127dp"
-                tools:layout_editor_absoluteY="8dp" />
-        </TableRow>
-        <TableRow android:layout_marginBottom="5dp">
-            <TextView
-                android:id="@+id/gender"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Gender :"
-                android:textColor="@color/colorWhite"
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/txtGender"
-                android:layout_width="wrap_content"
-                android:layout_height="45dp"
-                android:layout_weight="1"
-                android:ems="10"
-                android:padding="10dp"
-                android:background="@drawable/textbox_style"
-
-                android:inputType="text"
-                tools:layout_editor_absoluteX="127dp"
-                tools:layout_editor_absoluteY="8dp" />
-        </TableRow>
-        <TableRow android:layout_marginBottom="5dp">
-            <TextView
-                android:id="@+id/number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Contact No :"
-                android:textColor="@color/colorWhite"
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/txtContact"
-                android:layout_width="wrap_content"
-                android:layout_height="45dp"
-                android:layout_weight="1"
-                android:ems="10"
-                android:padding="10dp"
-                android:background="@drawable/textbox_style"
-
-                android:inputType="phone"
-                tools:layout_editor_absoluteX="127dp"
-                tools:layout_editor_absoluteY="8dp" />
-        </TableRow>
-        <Button
-            android:id="@+id/btnRegister"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Sign Up"
-            android:textSize="15dp"
-            android:layout_margin="10dp"
-            android:textColor="@color/colorWhite"
-            android:background="@drawable/round_text_style"
-            />
-    </TableLayout>
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:textSize="20sp"
+        android:textColor="@color/colorWhite"
+        android:background="@drawable/round_text_style"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:backgroundTint="@color/buttonGreen"
+        />
 
 
 

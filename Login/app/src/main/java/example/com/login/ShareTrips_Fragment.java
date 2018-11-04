@@ -3,65 +3,19 @@ package example.com.login;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import org.json.JSONObject;
-import org.json.JSONStringer;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
-
-public class ShareTrips_Fragment extends Fragment implements OnTaskCompleted {
-    String id;
-    String user;
-    String userid;
-    String preference;
-    String budget;
-    String meal_preference;
-    String meal_comments;
-    String type ;
-    String date;
-
-
-
-    // Set host address of the Web Server
-    public static final String HOST = "pigu.leongwenqing.com";
-    // Set virtual directory of the host website
-    public static final String DIR = "PIGU";
-    public static JSONObject jsonObject;
-
-    @BindView(R.id.btnFilter)
-    Button btnFilter;
-
-    @OnClick(R.id.btnFilter)
-    public void filter(){
-        Filter_fragment filterFrag = new Filter_fragment();
-        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.indexfc, filterFrag);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
-
-    }
-
+public class ShareTrips_Fragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = getLayoutInflater().inflate(R.layout.sharetrips_fragment, container, false);
-        ButterKnife.bind(this, view);
         ListView list;
-        getActivity().setTitle("Shared Trips");
-
         String[] maintitle = {
                 "Title 1", "Title 2",
                 "Title 3", "Title 4",
@@ -111,49 +65,8 @@ public class ShareTrips_Fragment extends Fragment implements OnTaskCompleted {
 
             }
         });
-        String jsonString = convertToJSON();
-        // call AsynTask to perform network operation on separate threadHttpAsyncTask task = new HttpAsyncTask(this);
-        HttpAsyncTask_Get task = new HttpAsyncTask_Get(this);
-        task.execute("https://" + HOST + "/"  + "v1/preference/preference/1", jsonString);
-
 
         return view;
-    }
-    public String convertToJSON() {
-        JSONStringer jsonText = new JSONStringer();
-        try {
-            jsonText.object();
-            jsonText.key("id");
-            jsonText.value(id);
-            jsonText.key("user");
-            jsonText.value(userid);
-            jsonText.key("userid");
-            jsonText.value(userid);
-            jsonText.key("preference");
-            jsonText.value(preference);
-            jsonText.key("budget");
-            jsonText.value(budget);
-            jsonText.key("meal_preference");
-            jsonText.value(meal_preference);
-            jsonText.key("meal_comments");
-            jsonText.value(meal_comments);
-            jsonText.key("type");
-            jsonText.value(type);
-            jsonText.key("date");
-            jsonText.value(date);
-
-
-
-            jsonText.endObject();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return jsonText.toString();
-    }
-    @Override
-    public void onTaskCompleted(String response) {
-        Log.d(DIR,response);
-
     }
 }
 

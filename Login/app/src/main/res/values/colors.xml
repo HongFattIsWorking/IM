@@ -7,5 +7,10 @@
     <color name="Transparentwhite">#FFFFFFF0</color>
     <color name="startColor">#574b90</color>
     <color name="endColor">#303952</color>
+    <color name="buttonGreen">#34d391</color>
+    <color name="greyScale">#747d87</color>
+    <color name="greyScaleLighter">#bbbcbe</color>
+    <color name="testcolor">#9eb3db</color>
+    <color name="iconColor">#404f6c</color>>
 
 </resources>
