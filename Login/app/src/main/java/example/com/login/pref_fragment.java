@@ -4,8 +4,13 @@ import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -24,7 +29,13 @@ public class pref_fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = getLayoutInflater().inflate(R.layout.preference_fragment, container, false);
+
         date = view.findViewById(R.id.etDate);
+        getActivity().setTitle("Preference");
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+
         date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,4 +72,15 @@ public class pref_fragment extends Fragment {
         ddlActivityIntensity.setAdapter(activityIntensityAdapter);
         return view;
     }
+    public boolean OnOptionsItemSelected(MenuItem item){
+        Log.d("TAG",item.getItemId() + "");
+        if(item.getItemId() == R.id.home){
+            getActivity().getSupportFragmentManager().beginTransaction().remove(this).commit();
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
 }

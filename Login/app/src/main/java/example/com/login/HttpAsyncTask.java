@@ -37,6 +37,7 @@ public class HttpAsyncTask extends AsyncTask<String, Void, String> {
                     urlConnection.setDoOutput(true);
                     urlConnection.setChunkedStreamingMode(0);
                     urlConnection.setRequestProperty("content-type", "application/json");
+                    
                     DataOutputStream outputStream = new DataOutputStream(urlConnection.getOutputStream());
                     outputStream.write(data.getBytes("UTF-8"));
                     outputStream.flush();

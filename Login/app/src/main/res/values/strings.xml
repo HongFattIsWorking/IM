@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Pigu Suprise</string>
-    <string name="forgetPassword"><u>Forget Password ?</u>.</string>
+    <string name="forgetPassword"><u>Forget Password ?</u></string>
 
 </resources>

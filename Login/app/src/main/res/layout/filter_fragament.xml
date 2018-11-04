@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="2"
+        android:layout_marginBottom="5dp"
+        >
+        <TableRow
+            android:layout_marginBottom="5dp">
+            <TextView
+                android:id="@+id/tvRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rating"
+                android:padding="10dp"
+                android:textSize="20sp"/>
+            <RadioGroup
+                android:id="@+id/rgFilterRate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rbAsc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ascending"
+                    android:checked="true" />
+
+                <RadioButton
+                    android:id="@+id/rbDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Descending" />
+
+            </RadioGroup>
+        </TableRow>
+        <TableRow
+            android:layout_marginBottom="5dp">
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Price"
+                android:textSize="20sp" />
+            <RadioGroup
+                android:id="@+id/rgFilterPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rbPriceAsc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ascending"
+                    android:checked="true" />
+
+                <RadioButton
+                    android:id="@+id/rbPriceDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Descending" />
+            </RadioGroup>
+        </TableRow>
+        <TableRow
+            android:layout_marginBottom="5dp">
+            <TextView
+                android:id="@+id/tvNumOfPax"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Number of pax"
+                android:textSize="20sp"
+               />
+            <Spinner
+                android:id="@+id/spinner1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/btn_dropdown"
+                android:dropDownWidth="match_parent"
+                android:spinnerMode="dropdown" />
+        </TableRow>
+        <TableRow
+            android:layout_marginBottom="5dp">
+            <TextView
+                android:id="@+id/tvActivityIntensity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Activity Intensity"
+                android:textSize="20sp"
+                />
+            <Spinner
+                android:id="@+id/spinner2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/btn_dropdown"
+                android:spinnerMode="dropdown"/>
+
+        </TableRow>
+        <TableRow
+            android:layout_marginBottom="5dp">
+            <TextView
+                android:id="@+id/tvBudget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Budget"
+                android:textSize="20sp"
+                />
+            <EditText
+                android:id="@+id/etBudget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Enter Budget per pax"
+                android:inputType="number"
+                />
+
+        </TableRow>
+
+            <RadioGroup
+                android:id="@+id/rgFilterTripType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rbFull"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Full Day"
+                    android:checked="true" />
+
+                <RadioButton
+                    android:id="@+id/rbHalf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Half Day" />
+
+            </RadioGroup>
+
+    </TableLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+</RelativeLayout>

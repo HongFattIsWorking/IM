@@ -16,7 +16,7 @@ public class Trips_fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
 
         View view =  getLayoutInflater().inflate(R.layout.trips_fragment,container,false);
-
+        getActivity().setTitle("Your Trips");
         tabLayout = (TabLayout) view.findViewById(R.id.tlTrips);
         tabLayout.addTab(tabLayout.newTab().setText("Upcoming Trips"));
         tabLayout.addTab(tabLayout.newTab().setText("Trips History"));
