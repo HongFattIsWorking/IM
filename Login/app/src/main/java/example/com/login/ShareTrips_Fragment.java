@@ -17,6 +17,9 @@ import android.widget.Toast;
 import org.json.JSONObject;
 import org.json.JSONStringer;
 
+import java.util.ArrayList;
+import java.util.logging.SocketHandler;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -33,6 +36,7 @@ public class ShareTrips_Fragment extends Fragment implements OnTaskCompleted {
     String type ;
     String date;
 
+    ArrayList<ShareTrips> sharetripslist = new ArrayList<>();
 
 
     // Set host address of the Web Server
@@ -53,7 +57,6 @@ public class ShareTrips_Fragment extends Fragment implements OnTaskCompleted {
         fragmentTransaction.commit();
 
     }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -108,7 +111,6 @@ public class ShareTrips_Fragment extends Fragment implements OnTaskCompleted {
 
                     Toast.makeText(getContext(), "Place Your Fifth Option Code", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
         String jsonString = convertToJSON();
@@ -141,9 +143,6 @@ public class ShareTrips_Fragment extends Fragment implements OnTaskCompleted {
             jsonText.value(type);
             jsonText.key("date");
             jsonText.value(date);
-
-
-
             jsonText.endObject();
         } catch (Exception e) {
             e.printStackTrace();
@@ -153,6 +152,7 @@ public class ShareTrips_Fragment extends Fragment implements OnTaskCompleted {
     @Override
     public void onTaskCompleted(String response) {
         Log.d(DIR,response);
+
 
     }
 }
