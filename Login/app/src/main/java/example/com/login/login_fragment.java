@@ -1,8 +1,6 @@
 package example.com.login;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -16,7 +14,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONStringer;
 
@@ -31,7 +28,7 @@ public class login_fragment extends Fragment implements OnTaskCompleted{
     public static final String HOST = "pigu.leongwenqing.com";
     // Set virtual directory of the host website
     public static final String DIR = "PIGU";
-    public static  JSONObject jsonObject;
+
     @BindView(R.id.txtEmail)
     EditText etEmail;
 
@@ -42,12 +39,12 @@ public class login_fragment extends Fragment implements OnTaskCompleted{
     TextView tvForget;
 
     @OnClick(R.id.btnSubmit)
-    void login ()  {
-
-            String jsonString = convertToJSON();
-            HttpAsyncTask task = new HttpAsyncTask(login_fragment.this);
-            task.execute("https://" + HOST + "/"  + "v1/user/login", jsonString);
-
+    void signUP (){
+      //  PopUpDiagram dialog = new PopUpDiagram(getContext());
+        //dialog.displayDialog("nimama","nimama nipapa");
+        Intent intent = new Intent(getContext(), Index.class);
+       startActivity(intent);
+//
     }
 
 
@@ -68,6 +65,21 @@ public class login_fragment extends Fragment implements OnTaskCompleted{
         final Button submitButton = (Button) view.findViewById(R.id.btnSubmit);
         ButterKnife.bind(this, view);
 
+
+//        submitButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                //create data in JSON format
+//               // String jsonString = convertToJSON();
+//                // call AsynTask to perform network operation on separate threadHttpAsyncTask task = new HttpAsyncTask(this);
+//             //  HttpAsyncTask task = new HttpAsyncTask(login_fragment.this);
+//               // task.execute("https://" + HOST + "/"  + "v1/user/login", jsonString);
+//                //Toast.makeText(getContext(), "created " , Toast.LENGTH_LONG).show();
+//                Intent intent = new Intent(view.getContext(), Index.class);
+//                startActivity(intent);
+//            }
+//        });
         return view;
     }
     public String convertToJSON() {
@@ -87,9 +99,9 @@ public class login_fragment extends Fragment implements OnTaskCompleted{
     }
     public void retrieveFromJSON(String message) {
         try {
-             jsonObject = new JSONObject(message);
-            //msgType = jsonObject.getString("token");
-           // Log.d(DIR,jsonObject.getString("token"));
+            JSONObject jsonObject = new JSONObject(message);
+            msgType = jsonObject.getString("token");
+            Log.d(DIR,msgType);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -98,25 +110,5 @@ public class login_fragment extends Fragment implements OnTaskCompleted{
     @Override
     public void onTaskCompleted(String response) {
         retrieveFromJSON(response);
-        try {
-            if(jsonObject != null)
-            {
-                SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putString(jsonObject.getString("token"), "token");
-                editor.commit();
-                Intent intent = new Intent(getContext(), Index.class);
-                startActivity(intent);
-                Toast.makeText(getContext(), "Successfully Login!" , Toast.LENGTH_LONG).show();
-            }
-            else
-            {
-                PopUpDiagram dialog = new PopUpDiagram(getContext());
-                dialog.displayDialog("Notification","Wrong email or password entered");
-            }
-        } catch (JSONException e) {
-            PopUpDiagram dialog = new PopUpDiagram(getContext());
-            dialog.displayDialog("Error","Please contact your the system admin");
-        }
     }
 }

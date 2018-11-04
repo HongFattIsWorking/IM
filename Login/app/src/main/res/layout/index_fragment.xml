@@ -1,16 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@color/colorAccent"
     android:layout_height="match_parent">
 
-
-    <Button
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Suprise me"
-        android:id="@+id/btnSubmit"
-        android:layout_centerInParent="true"/>
+        android:src="@drawable/people2"
+        android:scaleType="centerCrop"
+        />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/mono_blue_layout"
+        android:alpha="0.9"
+        />
+
+    <com.skyfishjy.library.RippleBackground
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/btnripple"
+        android:alpha="0.7"
+        app:rb_color="@color/buttonGreen"
+        app:rb_radius="64dp"
+        app:rb_rippleAmount="6"
+        app:rb_duration="2000"
+        app:rb_scale="3">
+
+        <TextView
+            android:id="@+id/btnSubmit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/circle"
+            android:alpha="0.9"
+            />
+    </com.skyfishjy.library.RippleBackground>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Suprise Me"
+        android:textSize="30sp"
+        android:layout_centerInParent="true"
+        android:textColor="@color/testcolor"
+        android:textStyle="italic"
+        android:alpha="0.7"/>
 
 
 </RelativeLayout>
