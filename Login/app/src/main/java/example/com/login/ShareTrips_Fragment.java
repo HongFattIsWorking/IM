@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONStringer;
 
@@ -34,7 +36,8 @@ public class ShareTrips_Fragment extends Fragment implements OnTaskCompleted {
     String meal_comments;
     String type ;
     String date;
-
+    String msgType;
+    JSONArray jsonObject;
     ArrayList<ShareTrips> sharetripslist = new ArrayList<>();
 
 
@@ -42,7 +45,7 @@ public class ShareTrips_Fragment extends Fragment implements OnTaskCompleted {
     public static final String HOST = "pigu.leongwenqing.com";
     // Set virtual directory of the host website
     public static final String DIR = "PIGU";
-    public static JSONObject jsonObject;
+    //public static JSONObject jsonObject;
 
     @BindView(R.id.btnFilter)
     Button btnFilter;
@@ -109,6 +112,12 @@ public class ShareTrips_Fragment extends Fragment implements OnTaskCompleted {
                 }
             }
         });
+        String jsonString = convertToJSON();
+        // call AsynTask to perform network operation on separate threadHttpAsyncTask task = new HttpAsyncTask(this);
+        HttpAsyncTask_Get task = new HttpAsyncTask_Get(ShareTrips_Fragment.this);
+        task.execute("https://" + HOST + "/"  + "v1/itinerary/sharetrip", jsonString);
+
+
 
         return view;
     }
@@ -140,12 +149,42 @@ public class ShareTrips_Fragment extends Fragment implements OnTaskCompleted {
         }
         return jsonText.toString();
     }
+    public void retrieveFromJSON(String message) {
+        try {
+             jsonObject = new JSONArray(message);
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     @Override
     public void onTaskCompleted(String response) {
-        Log.d(DIR,response);
+        retrieveFromJSON(response);
+        try {
+            for(int i=0;i<jsonObject.length();i++)
+            {
+                ShareTrips st = new ShareTrips();
+                JSONObject jsonObject1 = null;
+                jsonObject1 = jsonObject.getJSONObject(i);
+                st.setId(jsonObject1.optString("id"));
+                st.setUser(jsonObject1.optString("user"));
+                st.setPreference(jsonObject1.optString("preference"));
+                st.setUserid(jsonObject1.optString("userid"));
+                st.setBudget(jsonObject1.optString("budget"));
+                st.setMeal_pref(jsonObject1.optString("meal_preference"));
+                st.setMeal_comment(jsonObject1.optString("meal_comments"));
+                st.setType(jsonObject1.optString("type"));
+                st.setDate(jsonObject1.optString("date"));
+                sharetripslist.add(st);
+            }
+        } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
-
+//            for(ShareTrips x : sharetripslist){
+//                Log.d(DIR,x.getBudget());
+//            }
+        }
     }
-
-}
 

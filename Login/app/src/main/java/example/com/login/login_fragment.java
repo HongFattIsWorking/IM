@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONStringer;
 
@@ -24,6 +25,7 @@ import butterknife.OnClick;
 
 public class login_fragment extends Fragment implements OnTaskCompleted{
     String msgType;
+    JSONObject jsonObject;
     // Set host address of the Web Server
     public static final String HOST = "pigu.leongwenqing.com";
     // Set virtual directory of the host website
@@ -40,14 +42,13 @@ public class login_fragment extends Fragment implements OnTaskCompleted{
 
     @OnClick(R.id.btnSubmit)
     void signUP (){
-      //  PopUpDiagram dialog = new PopUpDiagram(getContext());
+        //  PopUpDiagram dialog = new PopUpDiagram(getContext());
         //dialog.displayDialog("nimama","nimama nipapa");
-        Intent intent = new Intent(getContext(), Index.class);
-       startActivity(intent);
-//
+        String jsonString = convertToJSON();
+        // call AsynTask to perform network operation on separate threadHttpAsyncTask task = new HttpAsyncTask(this);
+        HttpAsyncTask task = new HttpAsyncTask(login_fragment.this);
+        task.execute("https://" + HOST + "/"  + "v1/user/login", jsonString);
     }
-
-
 
     @Nullable
     @Override
@@ -62,24 +63,12 @@ public class login_fragment extends Fragment implements OnTaskCompleted{
                 startActivity(intent);
             }
         });
+
         final Button submitButton = (Button) view.findViewById(R.id.btnSubmit);
         ButterKnife.bind(this, view);
 
 
-//        submitButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                //create data in JSON format
-//               // String jsonString = convertToJSON();
-//                // call AsynTask to perform network operation on separate threadHttpAsyncTask task = new HttpAsyncTask(this);
-//             //  HttpAsyncTask task = new HttpAsyncTask(login_fragment.this);
-//               // task.execute("https://" + HOST + "/"  + "v1/user/login", jsonString);
-//                //Toast.makeText(getContext(), "created " , Toast.LENGTH_LONG).show();
-//                Intent intent = new Intent(view.getContext(), Index.class);
-//                startActivity(intent);
-//            }
-//        });
+
         return view;
     }
     public String convertToJSON() {
@@ -99,7 +88,7 @@ public class login_fragment extends Fragment implements OnTaskCompleted{
     }
     public void retrieveFromJSON(String message) {
         try {
-            JSONObject jsonObject = new JSONObject(message);
+             jsonObject = new JSONObject(message);
             msgType = jsonObject.getString("token");
             Log.d(DIR,msgType);
         } catch (Exception e) {
@@ -109,6 +98,15 @@ public class login_fragment extends Fragment implements OnTaskCompleted{
     }
     @Override
     public void onTaskCompleted(String response) {
+
         retrieveFromJSON(response);
+        try {
+            if(jsonObject.getString("token")!= null){
+                Intent intent = new Intent(getContext(), Index.class);
+                startActivity(intent);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }
