@@ -42,6 +42,7 @@ public class Profile_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
         View view =  getLayoutInflater().inflate(R.layout.profile_fragment,container,false);
         ButterKnife.bind(this, view);
+        getActivity().setTitle("Profile");
         return view;
 
 

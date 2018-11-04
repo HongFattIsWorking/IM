@@ -85,7 +85,6 @@
         android:layout_marginTop="10dp"
         android:clickable="true"
         android:text="@string/forgetPassword"
-
         android:textColor="@color/colorWhite" />
 
 </LinearLayout>

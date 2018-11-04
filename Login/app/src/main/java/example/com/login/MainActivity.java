@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tablayout);
         tabLayout.addTab(tabLayout.newTab().setText("Login"));
         tabLayout.addTab(tabLayout.newTab().setText("Register"));
-
+        getSupportActionBar().hide();
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
         viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount()));
         viewPager.setOnPageChangeListener(new TabLayoutOnPageChangeListener(tabLayout));

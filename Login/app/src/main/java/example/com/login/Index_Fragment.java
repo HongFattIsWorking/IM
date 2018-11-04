@@ -10,11 +10,14 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class Index_Fragment extends Fragment {
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
@@ -22,6 +25,7 @@ public class Index_Fragment extends Fragment {
 
         final Button submitButton = (Button) view.findViewById(R.id.btnSubmit);
         ButterKnife.bind(this, view);
+        getActivity().setTitle("Home");
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
