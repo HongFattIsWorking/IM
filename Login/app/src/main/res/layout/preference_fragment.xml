@@ -6,149 +6,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/mono_blue_layout"
-    android:padding="10dp">
-<!--
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/textdropdown"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableRight="@drawable/ic_lock_black_24dp"
-            android:text="Water event 1"/>
-
-        <android.support.v7.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/recycle_view"
-            ></android.support.v7.widget.RecyclerView>
-
-    </RelativeLayout>
-
-
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:stretchColumns="2">
-
-        <TableRow android:layout_marginBottom="5dp">
-
-            <TextView
-                android:id="@+id/tvNumOfPax"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:text="Number of pax:"
-                android:textSize="20sp" />
-
-            <Spinner
-                android:id="@+id/spinner1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@android:drawable/btn_dropdown"
-                android:dropDownWidth="match_parent"
-                android:spinnerMode="dropdown" />
-        </TableRow>
-
-        <TableRow android:layout_marginBottom="5dp">
-
-            <TextView
-                android:id="@+id/tvActivityIntensity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:text="Activity Intensity:"
-                android:textSize="20sp" />
-
-            <Spinner
-                android:id="@+id/spinner2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@android:drawable/btn_dropdown"
-                android:spinnerMode="dropdown" />
-        </TableRow>
-
-        <TableRow android:layout_marginBottom="5dp">
-
-            <TextView
-                android:id="@+id/tvDateTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:text="Activity Intensity:"
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/etDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="Enter Data" />
-        </TableRow>
-
-        <TableRow android:layout_marginBottom="5dp">
-
-            <TextView
-                android:id="@+id/tvBudget"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:text="Budget"
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/etBudget"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="Enter Budget per pax"
-                android:inputType="number" />
-        </TableRow>
-
-        <RadioGroup
-            android:id="@+id/rgTripType"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/rbFull"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="Full Day" />
-
-            <RadioButton
-                android:id="@+id/rbHalf"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Half Day" />
-
-        </RadioGroup>
-    </TableLayout>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Generate Trip"/>
-        -->
+    android:paddingRight="15dp"
+    android:paddingLeft="20dp">
 
     <TextView
-        android:padding="10dp"
+        android:padding="5dp"
         android:id="@+id/numofpaxlabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Number of pax:"
-        android:textColor="@color/greyScale"
-        android:textSize="25sp"
-        app:layout_constraintRight_toLeftOf="@id/dropdown1"
+        android:textColor="@color/greyScaleLighter"
+        android:textSize="20sp"
         />
 
     <TextView
         android:id="@+id/dropdown1"
-        android:layout_width="180dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="water event 1"
+        android:text="Please choose one"
         android:textSize="25sp"
         android:drawableEnd="@drawable/downcarrot"
         android:background="@drawable/dropdownborder_style"
@@ -159,109 +34,103 @@
         android:maxLines="1"
         android:textAlignment="center"
         android:backgroundTint="@color/testcolor"
+        app:layout_constraintTop_toBottomOf="@id/numofpaxlabel"
         app:layout_constraintRight_toRightOf="parent"/>
 
     <TextView
         android:id="@+id/divider1"
         android:layout_width="wrap_content"
-        android:layout_height="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/numofpaxlabel"
+        android:layout_height="1dp"
+        app:layout_constraintTop_toBottomOf="@+id/dropdown1"
         />
 
     <TextView
-        android:padding="10dp"
+        android:padding="5dp"
         android:id="@+id/numofpaxlabel2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Intensity Level:"
-        android:textColor="@color/greyScale"
-        android:textSize="25sp"
+        android:textColor="@color/greyScaleLighter"
+        android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@+id/divider1"
-        app:layout_constraintRight_toLeftOf="@id/dropdown3"
         />
 
     <TextView
         android:id="@+id/dropdown2"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:text="water event 1"
-        android:textSize="25sp"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:background="@drawable/dropdownborder_style"
         android:backgroundTint="@color/testcolor"
         android:drawableEnd="@drawable/downcarrot"
         android:drawableTint="@color/iconColor"
-        android:background="@drawable/dropdownborder_style"
-        android:padding="10dp"
-        android:textAlignment="center"
-
-        android:layout_marginEnd="5dp"
         android:ellipsize="end"
         android:maxLines="1"
+        android:padding="10dp"
+        android:text="Please choose one"
+        android:textAlignment="center"
+        android:textSize="25sp"
         app:layout_constraintLeft_toRightOf="@+id/numofpaxlabel2"
-        app:layout_constraintTop_toBottomOf="@+id/divider1"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numofpaxlabel2" />
 
     <TextView
         android:id="@+id/divider2"
         android:layout_width="wrap_content"
-        android:layout_height="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/numofpaxlabel2"
+        android:layout_height="1dp"
+        app:layout_constraintTop_toBottomOf="@+id/dropdown2"
         />
 
     <TextView
-        android:padding="10dp"
+        android:padding="5dp"
         android:id="@+id/numofpaxlabel3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Activity Date:"
-        android:textColor="@color/greyScale"
-        android:textSize="25sp"
+        android:textColor="@color/greyScaleLighter"
+        android:textSize="20sp"
         android:textAlignment="textEnd"
         app:layout_constraintTop_toBottomOf="@+id/divider2"
-        app:layout_constraintRight_toLeftOf="@id/dropdown3"
         />
 
     <TextView
         android:id="@+id/dropdown3"
-        android:layout_width="180dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="13/24/30"
+        android:hint="Click to select date"
         android:textSize="25sp"
-        android:textColor="@color/greyScale"
         android:background="@drawable/dropdownborder_style"
         android:layout_marginEnd="5dp"
         android:padding="10dp"
         android:backgroundTint="@color/testcolor"
         android:textAlignment="center"
         android:drawableEnd="@drawable/calendar"
-        android:drawableTint="@color/iconColor"
-        app:layout_constraintTop_toBottomOf="@+id/divider2"
+        app:layout_constraintTop_toBottomOf="@+id/numofpaxlabel3"
         app:layout_constraintRight_toRightOf="parent"/>
 
     <TextView
         android:id="@+id/divider3"
         android:layout_width="wrap_content"
-        android:layout_height="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/numofpaxlabel3"
+        android:layout_height="1dp"
+        app:layout_constraintTop_toBottomOf="@+id/dropdown3"
         />
 
     <TextView
-        android:padding="10dp"
+        android:padding="5dp"
         android:id="@+id/numofpaxlabel4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Budget :"
-        android:textColor="@color/greyScale"
-        android:textSize="25sp"
+        android:textColor="@color/greyScaleLighter"
+        android:textSize="20sp"
         android:textAlignment="textEnd"
         app:layout_constraintTop_toBottomOf="@+id/divider3"
-        app:layout_constraintRight_toLeftOf="@id/dropdown3"
         />
 
     <EditText
         android:id="@+id/dropdown4"
-        android:layout_width="180dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="50"
+        android:hint="e.g 50"
         android:textSize="25sp"
         android:background="@drawable/dropdownborder_style"
         android:layout_marginEnd="5dp"
@@ -269,9 +138,8 @@
         android:drawableLeft="@drawable/moneysign"
         android:textAlignment="center"
         android:backgroundTint="@color/testcolor"
-        android:drawableTint="@color/iconColor"
         android:inputType="number"
-        app:layout_constraintTop_toBottomOf="@+id/divider3"
+        app:layout_constraintTop_toBottomOf="@+id/numofpaxlabel4"
         app:layout_constraintRight_toRightOf="parent"/>
 
     <RadioGroup
@@ -280,6 +148,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/dropdown4"
         android:orientation="horizontal"
+        android:padding="10dp"
         android:weightSum="10">
 
         <RadioButton
@@ -288,7 +157,8 @@
             android:layout_height="wrap_content"
             android:checked="true"
             android:layout_weight="5"
-            android:textColor="@color/greyScale"
+            android:textColor="@color/greyScaleLighter"
+            android:buttonTint="@color/testcolor"
             android:textSize="25sp"
             android:text="Full Day" />
 
@@ -298,7 +168,9 @@
             android:layout_height="wrap_content"
             android:checked="true"
             android:layout_weight="5"
-            android:textColor="@color/greyScale"
+
+            android:buttonTint="@color/testcolor"
+            android:textColor="@color/greyScaleLighter"
             android:textSize="25sp"
 
             android:text="Half Day" />
@@ -311,12 +183,9 @@
         app:layout_constraintTop_toBottomOf="@id/rgTripType"
         android:background="@drawable/round_text_style"
         android:backgroundTint="@color/buttonGreen"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:textSize="20sp"
+        android:textSize="25sp"
         android:textAlignment="center"
-        android:padding="15dp"
+        android:padding="10dp"
         android:text="Generate Trip"/>
 
     <android.support.v7.widget.RecyclerView
