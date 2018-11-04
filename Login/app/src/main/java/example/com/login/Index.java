@@ -16,11 +16,8 @@ public class Index extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_index);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        getSupportActionBar().setDisplayShowHomeEnabled(false);
 
         BottomNavigationView bottomNav = findViewById(R.id.indexbn);
-
         bottomNav.setOnNavigationItemSelectedListener(navListener);
         getSupportFragmentManager().beginTransaction().replace(R.id.indexfc,new Index_Fragment()).commit();
 
@@ -53,23 +50,4 @@ public class Index extends AppCompatActivity {
                 }
             };
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-               // getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-               // getSupportActionBar().setDisplayShowHomeEnabled(false);
-                onBackPressed();
-        }
-        return super.onOptionsItemSelected(item);
-    }
-    @Override
-    public void onBackPressed() {
-        if (getFragmentManager().getBackStackEntryCount() > 0 ) {
-            getFragmentManager().popBackStack();
-        }
-        else {
-            super.onBackPressed();
-        }
-    }
 }

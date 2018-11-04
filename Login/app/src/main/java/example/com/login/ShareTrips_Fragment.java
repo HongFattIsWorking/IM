@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -61,10 +60,7 @@ public class ShareTrips_Fragment extends Fragment implements OnTaskCompleted {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = getLayoutInflater().inflate(R.layout.sharetrips_fragment, container, false);
-        ButterKnife.bind(this, view);
         ListView list;
-        getActivity().setTitle("Shared Trips");
-
         String[] maintitle = {
                 "Title 1", "Title 2",
                 "Title 3", "Title 4",
@@ -113,11 +109,6 @@ public class ShareTrips_Fragment extends Fragment implements OnTaskCompleted {
                 }
             }
         });
-        String jsonString = convertToJSON();
-        // call AsynTask to perform network operation on separate threadHttpAsyncTask task = new HttpAsyncTask(this);
-        HttpAsyncTask_Get task = new HttpAsyncTask_Get(this);
-        task.execute("https://" + HOST + "/"  + "v1/preference/preference/1", jsonString);
-
 
         return view;
     }
@@ -155,5 +146,6 @@ public class ShareTrips_Fragment extends Fragment implements OnTaskCompleted {
 
 
     }
+
 }
 

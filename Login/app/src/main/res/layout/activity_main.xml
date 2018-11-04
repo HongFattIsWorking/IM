@@ -5,24 +5,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@drawable/background_color">
+    >
+
+    <ImageView
+        android:id="@+id/home_menu_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/people"
+        android:scaleType="centerCrop"
+        android:fillColor="#9934d391" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/mono_blue_layout"
+        android:alpha="0.90"
+        />
+
     <android.support.design.widget.AppBarLayout
         android:theme="@style/AppTheme"
         android:id="@+id/toolbar"
         android:background="#00000000"
-        android:paddingTop="8dp"
+        android:paddingTop="100dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="?attr/actionBarSize"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-    <ImageView android:layout_gravity="center"
+
+        <ImageView android:layout_gravity="center"
         android:background="@drawable/ic_lock_black_24dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:contentDescription="LOGO"
         />
-    <android.support.design.widget.TabLayout
+
+        <android.support.design.widget.TabLayout
         android:id="@+id/tablayout"
         android:background="#00000000"
         android:layout_width="match_parent"
@@ -30,7 +47,6 @@
         android:minHeight="?attr/actionBarSize"
         app:tabSelectedTextColor="@color/colorWhite"
         app:tabTextColor="@color/colorWhite"
-        app:tabIndicatorColor="@android:color/white"
 
         />
     </android.support.design.widget.AppBarLayout>

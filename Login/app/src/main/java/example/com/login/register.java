@@ -35,15 +35,6 @@ public class register extends AppCompatActivity implements OnTaskCompleted {
     @BindView(R.id.txtName)
     EditText etName;
 
-    @BindView(R.id.txtAge)
-    EditText etAge;
-
-    @BindView(R.id.txtGender)
-    EditText etGender;
-
-    @BindView(R.id.txtContact)
-    EditText etContact;
-
     @BindView(R.id.txtpassword)
     EditText etPassword;
 
@@ -54,14 +45,6 @@ public class register extends AppCompatActivity implements OnTaskCompleted {
             jsonText.object();
             jsonText.key("name");
             jsonText.value(etName.getText().toString());
-            jsonText.key("age");
-            jsonText.value(etAge.getText().toString());
-            jsonText.key("gender");
-            jsonText.value(etGender.getText().toString());
-            jsonText.key("email");
-            jsonText.value(etEmail);
-            jsonText.key("phone");
-            jsonText.value(etContact.getText().toString());
             jsonText.key("password");
             jsonText.value(etPassword.getText().toString());
             jsonText.endObject();
