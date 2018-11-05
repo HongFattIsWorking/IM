@@ -167,6 +167,7 @@ public class ShareTrips_Fragment extends Fragment implements OnTaskCompleted {
     @Override
     public void onTaskCompleted(String response) {
         retrieveFromJSON(response);
+        Log.d("teting1234",jsonObject.toString());
         try {
             for(int i=0;i<jsonObject.length();i++)
             {
@@ -200,5 +201,5 @@ public class ShareTrips_Fragment extends Fragment implements OnTaskCompleted {
         sharedTripRecycleView.setAdapter(recycleViewAdapter);
         sharedTripRecycleView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
-    }
+}
 

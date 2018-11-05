@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:text="Number of pax:"
         android:textColor="@color/greyScaleLighter"
-        android:textSize="20sp"
+        android:textSize="25sp"
         />
 
     <TextView
@@ -33,7 +33,7 @@
         android:ellipsize="end"
         android:maxLines="1"
         android:textAlignment="center"
-        android:backgroundTint="@color/testcolor"
+        android:backgroundTint="@color/greyScaleLighter"
         app:layout_constraintTop_toBottomOf="@id/numofpaxlabel"
         app:layout_constraintRight_toRightOf="parent"/>
 
@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:text="Intensity Level:"
         android:textColor="@color/greyScaleLighter"
-        android:textSize="20sp"
+        android:textSize="25sp"
         app:layout_constraintTop_toBottomOf="@+id/divider1"
         />
 
@@ -60,13 +60,14 @@
         android:layout_width="match_parent"
         android:layout_height="54dp"
         android:background="@drawable/dropdownborder_style"
-        android:backgroundTint="@color/testcolor"
+        android:backgroundTint="@color/greyScaleLighter"
         android:drawableEnd="@drawable/downcarrot"
         android:drawableTint="@color/iconColor"
         android:ellipsize="end"
         android:maxLines="1"
         android:padding="10dp"
         android:text="Please choose one"
+        android:layout_marginEnd="5dp"
         android:textAlignment="center"
         android:textSize="25sp"
         app:layout_constraintLeft_toRightOf="@+id/numofpaxlabel2"
@@ -87,7 +88,7 @@
         android:layout_height="wrap_content"
         android:text="Activity Date:"
         android:textColor="@color/greyScaleLighter"
-        android:textSize="20sp"
+        android:textSize="25sp"
         android:textAlignment="textEnd"
         app:layout_constraintTop_toBottomOf="@+id/divider2"
         />
@@ -101,7 +102,7 @@
         android:background="@drawable/dropdownborder_style"
         android:layout_marginEnd="5dp"
         android:padding="10dp"
-        android:backgroundTint="@color/testcolor"
+        android:backgroundTint="@color/greyScaleLighter"
         android:textAlignment="center"
         android:drawableEnd="@drawable/calendar"
         app:layout_constraintTop_toBottomOf="@+id/numofpaxlabel3"
@@ -121,7 +122,7 @@
         android:layout_height="wrap_content"
         android:text="Budget :"
         android:textColor="@color/greyScaleLighter"
-        android:textSize="20sp"
+        android:textSize="25sp"
         android:textAlignment="textEnd"
         app:layout_constraintTop_toBottomOf="@+id/divider3"
         />
@@ -137,7 +138,7 @@
         android:padding="10dp"
         android:drawableLeft="@drawable/moneysign"
         android:textAlignment="center"
-        android:backgroundTint="@color/testcolor"
+        android:backgroundTint="@color/greyScaleLighter"
         android:inputType="number"
         app:layout_constraintTop_toBottomOf="@+id/numofpaxlabel4"
         app:layout_constraintRight_toRightOf="parent"/>
@@ -158,7 +159,7 @@
             android:checked="true"
             android:layout_weight="5"
             android:textColor="@color/greyScaleLighter"
-            android:buttonTint="@color/testcolor"
+            android:buttonTint="@color/greyScaleLighter"
             android:textSize="25sp"
             android:text="Full Day" />
 
@@ -169,7 +170,7 @@
             android:checked="true"
             android:layout_weight="5"
 
-            android:buttonTint="@color/testcolor"
+            android:buttonTint="@color/greyScaleLighter"
             android:textColor="@color/greyScaleLighter"
             android:textSize="25sp"
 
@@ -184,6 +185,7 @@
         android:background="@drawable/round_text_style"
         android:backgroundTint="@color/buttonGreen"
         android:textSize="25sp"
+        android:textColor="@color/colorWhite"
         android:textAlignment="center"
         android:padding="10dp"
         android:text="Generate Trip"/>
