@@ -1,18 +1,23 @@
 package example.com.login;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class SharedTripRecycleAdapter extends RecyclerView.Adapter<SharedTripRecycleAdapter.ViewHolder> {
 
@@ -42,12 +47,6 @@ public class SharedTripRecycleAdapter extends RecyclerView.Adapter<SharedTripRec
         holder.budgettxt.setText(shareTripsData.get(position).budget);
         holder.intensityText.setText("wet sport activity");
         holder.tripDuration.setText("Full Day");
-        holder.sharedTripRoot.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               showPopUp(view,context);
-            }
-        });
 
     }
 
@@ -73,19 +72,11 @@ public class SharedTripRecycleAdapter extends RecyclerView.Adapter<SharedTripRec
         @BindView(R.id.tripdurationtext)
         TextView tripDuration;
 
+
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
         }
     }
 
-    public void showPopUp(View view,Context context) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService( Context.LAYOUT_INFLATER_SERVICE );
-        View customView = layoutInflater.inflate(R.layout.addingsharedpopup, null);
-        builder.setView(customView);
-        builder.create();
-        builder.show();
-
-    }
 }
