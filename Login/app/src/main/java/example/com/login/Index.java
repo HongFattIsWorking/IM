@@ -1,7 +1,9 @@
 package example.com.login;
 
 import android.app.FragmentManager;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -14,12 +16,16 @@ import android.widget.TextView;
 public class Index extends AppCompatActivity {
 
 
+    public interface IOnBackPressed {
+        boolean onBackPressed();
+    }
+
     @Override
     public void onBackPressed() {
-        super.onBackPressed();Fragment
-         selectedFragment = new Trips_fragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.indexfc,
-                selectedFragment).commit();
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.indexfc);
+        if (!(fragment instanceof IOnBackPressed) || !((IOnBackPressed) fragment).onBackPressed()) {
+            super.onBackPressed();
+        }
     }
 
     @Override
@@ -54,6 +60,7 @@ public class Index extends AppCompatActivity {
 
                     getSupportFragmentManager().beginTransaction().replace(R.id.indexfc,
                             selectedFragment).commit();
+
 
                     return true;
                 }

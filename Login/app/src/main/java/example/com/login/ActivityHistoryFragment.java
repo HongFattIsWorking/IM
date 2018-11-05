@@ -4,11 +4,12 @@ package example.com.login;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class ActivityHistoryFragment extends Fragment {
+public class ActivityHistoryFragment extends Fragment implements Index.IOnBackPressed {
 
 
 
@@ -22,4 +23,17 @@ public class ActivityHistoryFragment extends Fragment {
     }
 
 
+    @Override
+    public boolean onBackPressed() {
+            AppCompatActivity sctivity = (AppCompatActivity) getContext();
+            Trips_fragment myFrag = new Trips_fragment();
+            Bundle args = new Bundle();
+            args.putString("flag","1" );
+            myFrag.setArguments(args);
+            sctivity.getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.indexfc, myFrag)
+                    .addToBackStack(null).commit();
+            return true;
+    }
 }
