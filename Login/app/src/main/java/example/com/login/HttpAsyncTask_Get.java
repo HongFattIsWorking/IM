@@ -20,7 +20,7 @@ public class HttpAsyncTask_Get extends AsyncTask<String, Void, String> {
 		this.listener=listener;
 	}
 
-	public static String GET(String url, String data) {
+	public static String GET(String url) {
 		String result = "";
 		try {
 			URL urlString = new URL(url);
@@ -68,7 +68,7 @@ public class HttpAsyncTask_Get extends AsyncTask<String, Void, String> {
 	@Override
 	protected String doInBackground(String... urls) {
 
-		return GET(urls[0], urls[1]);
+		return GET(urls[0]);
 	}
 
 	// onPostExecute displays the results of the AsyncTask.

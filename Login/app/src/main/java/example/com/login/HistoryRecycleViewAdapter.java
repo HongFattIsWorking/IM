@@ -19,11 +19,11 @@ import butterknife.OnClick;
 
 public class HistoryRecycleViewAdapter extends RecyclerView.Adapter<HistoryRecycleViewAdapter.ViewHolder> {
 
-    ArrayList<Trips> tripsHistoryData;
+    ArrayList<TripHistory> tripsHistoryData;
     Context context;
 
 
-    public HistoryRecycleViewAdapter(Context context, ArrayList<Trips> tripsHistoryData){
+    public HistoryRecycleViewAdapter(Context context, ArrayList<TripHistory> tripsHistoryData){
         this.tripsHistoryData = tripsHistoryData;
         this.context = context;
     }
@@ -38,8 +38,8 @@ public class HistoryRecycleViewAdapter extends RecyclerView.Adapter<HistoryRecyc
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
 
-        holder.tripID.setText(tripsHistoryData.get(position).uderid);
-        holder.tripType.setText(tripsHistoryData.get(position).tripType);
+        holder.tripID.setText(tripsHistoryData.get(position).userId);
+        holder.tripType.setText(tripsHistoryData.get(position).budget);
         holder.date.setText(tripsHistoryData.get(position).date);
 
         holder.historyTrip.setOnClickListener(new View.OnClickListener() {
