@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,7 +42,6 @@ public class ShareTrips_Fragment extends Fragment implements OnTaskCompleted {
     JSONArray jsonObject;
     ArrayList<ShareTrips> sharetripslist = new ArrayList<>();
 
-
     // Set host address of the Web Server
     public static final String HOST = "pigu.leongwenqing.com";
     // Set virtual directory of the host website
@@ -49,6 +50,9 @@ public class ShareTrips_Fragment extends Fragment implements OnTaskCompleted {
 
     @BindView(R.id.btnFilter)
     Button btnFilter;
+
+    @BindView(R.id.sharedtriprecycle)
+    RecyclerView sharedTripRecycleView;
 
     @OnClick(R.id.btnFilter)
     public void filter(){
@@ -63,55 +67,57 @@ public class ShareTrips_Fragment extends Fragment implements OnTaskCompleted {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = getLayoutInflater().inflate(R.layout.sharetrips_fragment, container, false);
-        ListView list;
-        String[] maintitle = {
-                "Title 1", "Title 2",
-                "Title 3", "Title 4",
-                "Title 5",
-        };
+        ButterKnife.bind(this,view);
+//        ListView list;
+//        String[] maintitle = {
+//                "Title 1", "Title 2",
+//                "Title 3", "Title 4",
+//                "Title 5",
+//        };
+//
+//        String[] subtitle = {
+//                "Sub Title 1", "Sub Title 2",
+//                "Sub Title 3", "Sub Title 4",
+//                "Sub Title 5",
+//        };
+//        String[] budget = {
+//                "10", "20",
+//                "30", "40",
+//                "50",
+//        };
+//        String[] tripType = {
+//                "Half day", "Full day",
+//                "Full day", "Full day",
+//                "Full day",
+//        };
+//        CustomList adapter = new CustomList(getActivity(), maintitle, subtitle, budget, tripType);
+//        list = (ListView) view.findViewById(R.id.list);
+//        list.setAdapter(adapter);
+//
+//        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                // TODO Auto-generated method stub
+//                if (position == 0) {
+//                    //code specific to first list item
+//                    Toast.makeText(getContext(), "Place Your First Option Code", Toast.LENGTH_SHORT).show();
+//                } else if (position == 1) {
+//                    //code specific to 2nd list item
+//                    Toast.makeText(getContext(), "Place Your Second Option Code", Toast.LENGTH_SHORT).show();
+//                } else if (position == 2) {
+//
+//                    Toast.makeText(getContext(), "Place Your Third Option Code", Toast.LENGTH_SHORT).show();
+//                } else if (position == 3) {
+//
+//                    Toast.makeText(getContext(), "Place Your Forth Option Code", Toast.LENGTH_SHORT).show();
+//                } else if (position == 4) {
+//
+//                    Toast.makeText(getContext(), "Place Your Fifth Option Code", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
 
-        String[] subtitle = {
-                "Sub Title 1", "Sub Title 2",
-                "Sub Title 3", "Sub Title 4",
-                "Sub Title 5",
-        };
-        String[] budget = {
-                "10", "20",
-                "30", "40",
-                "50",
-        };
-        String[] tripType = {
-                "Half day", "Full day",
-                "Full day", "Full day",
-                "Full day",
-        };
-        CustomList adapter = new CustomList(getActivity(), maintitle, subtitle, budget, tripType);
-        list = (ListView) view.findViewById(R.id.list);
-        list.setAdapter(adapter);
-
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // TODO Auto-generated method stub
-                if (position == 0) {
-                    //code specific to first list item
-                    Toast.makeText(getContext(), "Place Your First Option Code", Toast.LENGTH_SHORT).show();
-                } else if (position == 1) {
-                    //code specific to 2nd list item
-                    Toast.makeText(getContext(), "Place Your Second Option Code", Toast.LENGTH_SHORT).show();
-                } else if (position == 2) {
-
-                    Toast.makeText(getContext(), "Place Your Third Option Code", Toast.LENGTH_SHORT).show();
-                } else if (position == 3) {
-
-                    Toast.makeText(getContext(), "Place Your Forth Option Code", Toast.LENGTH_SHORT).show();
-                } else if (position == 4) {
-
-                    Toast.makeText(getContext(), "Place Your Fifth Option Code", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
         String jsonString = convertToJSON();
         // call AsynTask to perform network operation on separate threadHttpAsyncTask task = new HttpAsyncTask(this);
         HttpAsyncTask_Get task = new HttpAsyncTask_Get(ShareTrips_Fragment.this);
@@ -161,6 +167,7 @@ public class ShareTrips_Fragment extends Fragment implements OnTaskCompleted {
     @Override
     public void onTaskCompleted(String response) {
         retrieveFromJSON(response);
+        Log.d("teting1234",jsonObject.toString());
         try {
             for(int i=0;i<jsonObject.length();i++)
             {
@@ -178,6 +185,8 @@ public class ShareTrips_Fragment extends Fragment implements OnTaskCompleted {
                 st.setDate(jsonObject1.optString("date"));
                 sharetripslist.add(st);
             }
+
+            initRecycleView();
         } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -186,5 +195,11 @@ public class ShareTrips_Fragment extends Fragment implements OnTaskCompleted {
 //                Log.d(DIR,x.getBudget());
 //            }
         }
+
+    private void initRecycleView(){
+        SharedTripRecycleAdapter recycleViewAdapter = new SharedTripRecycleAdapter(getContext(),sharetripslist);
+        sharedTripRecycleView.setAdapter(recycleViewAdapter);
+        sharedTripRecycleView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
+}
 

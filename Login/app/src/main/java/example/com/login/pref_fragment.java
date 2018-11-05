@@ -56,6 +56,8 @@ public class pref_fragment extends Fragment {
         else{
             recyclerView.setVisibility(View.GONE);
         }
+        recyclerView2.setVisibility(View.GONE);
+
     }
 
     @OnClick(R.id.dropdown2)
@@ -71,9 +73,10 @@ public class pref_fragment extends Fragment {
 
     @OnTouch(R.id.perfrenceroot)
     boolean exampleTouched(View v, MotionEvent ev) {
-        if(!(v instanceof RecyclerView)){
+        //if(!(v instanceof RecyclerView)){
             recyclerView.setVisibility(View.GONE);
-        }
+            recyclerView2.setVisibility(View.GONE);
+        //}
         return true;
     }
 
@@ -97,6 +100,10 @@ public class pref_fragment extends Fragment {
                 datePickerDialog.show();
 
     }
+
+
+
+
 
     @Nullable
     @Override

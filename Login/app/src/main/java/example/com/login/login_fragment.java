@@ -46,8 +46,10 @@ public class login_fragment extends Fragment implements OnTaskCompleted{
         //dialog.displayDialog("nimama","nimama nipapa");
         String jsonString = convertToJSON();
         // call AsynTask to perform network operation on separate threadHttpAsyncTask task = new HttpAsyncTask(this);
-        HttpAsyncTask task = new HttpAsyncTask(login_fragment.this);
-        task.execute("https://" + HOST + "/"  + "v1/user/login", jsonString);
+        //HttpAsyncTask task = new HttpAsyncTask(login_fragment.this);
+        //task.execute("https://" + HOST + "/"  + "v1/user/login", jsonString);
+        Intent intent = new Intent(getContext(), Index.class);
+        startActivity(intent);
     }
 
     @Nullable

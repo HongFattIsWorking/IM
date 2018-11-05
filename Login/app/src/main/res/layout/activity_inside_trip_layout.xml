@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal">
+
+
+    String id;
+    String activityName;
+    String longtitude;
+    String Latitude;
+    String address;
+    <android.support.v7.widget.CardView
+        android:id="@+id/activitytriproot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:layout_marginTop="10dp">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20dp">
+
+
+
+            <TextView
+                android:id="@+id/labeltxt1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:text="Activity Name:"/>
+
+            <TextView
+                android:id="@+id/activitnametxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:paddingLeft="10dp"
+                android:text="TripID:"
+                app:layout_constraintLeft_toRightOf="@id/labeltxt1"
+                />
+
+            <TextView
+                android:id="@+id/labeltxt2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:text="Address:"
+                app:layout_constraintTop_toBottomOf="@id/labeltxt1"/>
+
+            <TextView
+                android:id="@+id/addresstxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:paddingLeft="10dp"
+                android:text="TripID:"
+                app:layout_constraintLeft_toRightOf="@id/labeltxt2"
+                app:layout_constraintTop_toBottomOf="@id/labeltxt1"
+                />
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Going There"
+                android:padding="10dp"
+                android:background="@drawable/round_text_style"
+                app:layout_constraintTop_toBottomOf="@id/addresstxt"
+                app:layout_constraintRight_toRightOf="parent"
+                android:backgroundTint="@color/testcolor"
+                android:textSize="25sp"/>
+
+        </android.support.constraint.ConstraintLayout>
+
+
+    </android.support.v7.widget.CardView>
+</LinearLayout>
