@@ -1,20 +1,27 @@
 package example.com.login;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.OnTouch;
 
 public class OngoingTripRecycleViewAdapter extends RecyclerView.Adapter<OngoingTripRecycleViewAdapter.ViewHolder> {
@@ -49,6 +56,7 @@ public class OngoingTripRecycleViewAdapter extends RecyclerView.Adapter<OngoingT
         });
 
 
+
     }
 
     @Override
@@ -57,6 +65,7 @@ public class OngoingTripRecycleViewAdapter extends RecyclerView.Adapter<OngoingT
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
+
 
         @BindView(R.id.tripidtxt)
         TextView tripID;
@@ -76,6 +85,13 @@ public class OngoingTripRecycleViewAdapter extends RecyclerView.Adapter<OngoingT
         @BindView(R.id.imageedit)
         ImageView editImage;
 
+
+        @OnClick(R.id.removetrip)
+        void RemoveTrip(){
+
+        }
+
+
         @OnTouch(R.id.ongoingtriproot)
         boolean exampleTouched(View v, MotionEvent ev) {
             editCard.setVisibility(View.GONE);
@@ -86,14 +102,5 @@ public class OngoingTripRecycleViewAdapter extends RecyclerView.Adapter<OngoingT
             super(itemView);
             ButterKnife.bind(this,itemView);
         }
-    }
-
-    public void showPopUp(View view,Context context) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View customView = layoutInflater.inflate(R.layout.addingsharedpopup, null);
-        builder.setView(customView);
-        builder.create();
-        builder.show();
     }
 }
