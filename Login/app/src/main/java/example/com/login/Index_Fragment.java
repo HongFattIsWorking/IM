@@ -27,6 +27,8 @@ public class Index_Fragment extends Fragment {
     @BindView(R.id.btnripple)
     RippleBackground btmRipple;
 
+
+
     @OnClick(R.id.btnSubmit)
     void Submit(){
         // Create new fragment and transaction

@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 public class CustomList extends ArrayAdapter<String> {
@@ -18,7 +17,7 @@ public class CustomList extends ArrayAdapter<String> {
 
 
     public CustomList(Activity context, String[] maintitle, String[] subtitle,String[] budget,String[] tripType) {
-        super(context, R.layout.customlist, maintitle);
+        super(context, R.layout.shared_trip_card_layout, maintitle);
         // TODO Auto-generated constructor stub
 
         this.context=context;
@@ -31,22 +30,22 @@ public class CustomList extends ArrayAdapter<String> {
 
     public View getView(int position, View view, ViewGroup parent) {
         LayoutInflater inflater=context.getLayoutInflater();
-        View rowView=inflater.inflate(R.layout.customlist, null,true);
-        TextView numberOfPaxResult = (TextView) rowView.findViewById(R.id.numOfPaxResult);
-        TextView activityIntensityResult = (TextView) rowView.findViewById(R.id.activityIntensityResult);
-        TextView budgetResult = (TextView) rowView.findViewById(R.id.budgetResult);
-        TextView tripTypeResult = (TextView) rowView.findViewById(R.id.tripTypeResult);
-
-
-
-        // ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
-        //TextView subtitleText = (TextView) rowView.findViewById(R.id.subtitle);
-
-        numberOfPaxResult.setText(maintitle[position]);
-        activityIntensityResult.setText(subtitle[position]);
-        budgetResult.setText(budget[position]);
-        tripTypeResult.setText(tripType[position]);
-        //imageView.setImageResource(imgid[position]);
+        View rowView=inflater.inflate(R.layout.shared_trip_card_layout, null,true);
+//        TextView numberOfPaxResult = (TextView) rowView.findViewById(R.id.numOfPaxResult);
+//        TextView activityIntensityResult = (TextView) rowView.findViewById(R.id.activityIntensityResult);
+//        TextView budgetResult = (TextView) rowView.findViewById(R.id.budgetResult);
+//        TextView tripTypeResult = (TextView) rowView.findViewById(R.id.tripTypeResult);
+//
+//
+//
+//        // ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
+//        //TextView subtitleText = (TextView) rowView.findViewById(R.id.subtitle);
+//
+//        numberOfPaxResult.setText(maintitle[position]);
+//        activityIntensityResult.setText(subtitle[position]);
+//        budgetResult.setText(budget[position]);
+//        tripTypeResult.setText(tripType[position]);
+//        //imageView.setImageResource(imgid[position]);
 
 
         return rowView;
