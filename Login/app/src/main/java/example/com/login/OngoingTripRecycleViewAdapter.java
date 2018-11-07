@@ -85,6 +85,13 @@ public class OngoingTripRecycleViewAdapter extends RecyclerView.Adapter<OngoingT
         @BindView(R.id.imageedit)
         ImageView editImage;
 
+        CustomDialogForDate customDialogForDate = new CustomDialogForDate(context);
+
+        @OnClick(R.id.changedatetrip)
+        void changeDate(){
+            customDialogForDate.show();
+            customDialogForDate.setTextForPositiveButton("Change Date");
+        }
 
         @OnClick(R.id.removetrip)
         void RemoveTrip(){
