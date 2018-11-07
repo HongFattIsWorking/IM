@@ -1,9 +1,12 @@
 package example.com.login;
 
 
+import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.nfc.Tag;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.ProgressBar;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -15,13 +18,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class HttpAsyncTask extends AsyncTask<String, Void, String> {
-        private final static String TAG = "PIGU";
-        private OnTaskCompleted listener;
+    private final static String TAG = "PIGU";
+    private OnTaskCompleted listener;
 
         public HttpAsyncTask(OnTaskCompleted listener) {
         this.listener = listener;
     }
-
 
         public static String POST(String urlString, String data) {
             String result = "";
@@ -79,13 +81,18 @@ public class HttpAsyncTask extends AsyncTask<String, Void, String> {
         return result;
     }
 
+
+    ProgressDialog pb = null;
     // doInBackground execute tasks when asynctask is run
     @Override
     protected String doInBackground(String... urls)
     {
 
+
         return POST(urls[0], urls[1]);
     }
+
+
 
     // onPostExecute displays the results of the AsyncTask.
     @Override

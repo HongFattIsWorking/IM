@@ -8,10 +8,35 @@ public class ShareTrips {
     String preference;
     String userid;
     String budget;
-    String meal_pref;
-    String meal_comment;
+    String Intensity;
+    String tripType;
+    String pax;
     String type;
     String date;
+
+    public String getIntensity() {
+        return Intensity;
+    }
+
+    public void setIntensity(String intensity) {
+        Intensity = intensity;
+    }
+
+    public String getTripType() {
+        return tripType;
+    }
+
+    public void setTripType(String tripType) {
+        this.tripType = tripType;
+    }
+
+    public String getPax() {
+        return pax;
+    }
+
+    public void setPax(String pax) {
+        this.pax = pax;
+    }
 
     public String getId() {
         return id;
@@ -53,21 +78,7 @@ public class ShareTrips {
         this.budget = budget;
     }
 
-    public String getMeal_pref() {
-        return meal_pref;
-    }
 
-    public void setMeal_pref(String meal_pref) {
-        this.meal_pref = meal_pref;
-    }
-
-    public String getMeal_comment() {
-        return meal_comment;
-    }
-
-    public void setMeal_comment(String meal_comment) {
-        this.meal_comment = meal_comment;
-    }
 
     public String getType() {
         return type;

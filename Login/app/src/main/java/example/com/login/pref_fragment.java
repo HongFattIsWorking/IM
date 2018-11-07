@@ -1,12 +1,16 @@
 package example.com.login;
 
 import android.app.DatePickerDialog;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -14,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -26,9 +31,11 @@ import butterknife.OnClick;
 import butterknife.OnTouch;
 
 public class pref_fragment extends Fragment {
-    private EditText date;
     DatePickerDialog datePickerDialog;
-    TextView tvResult;
+
+    ActionBar actionbar;
+    TextView textview;
+    RelativeLayout.LayoutParams layoutparams;
 
     private ArrayList<String> intensity = new ArrayList<>();
     private ArrayList<String> numberOfPax = new ArrayList<>();
@@ -48,6 +55,17 @@ public class pref_fragment extends Fragment {
     @BindView(R.id.dropdown3)
     TextView textDropDown3;
 
+    @BindView(R.id.dropdown4)
+    EditText budget;
+
+    @BindView(R.id.btnGenTrip)
+    TextView generateTrips;
+
+    @OnClick(R.id.btnGenTrip)
+    void generateTrips(){
+
+    }
+
     @OnClick(R.id.dropdown1)
     void showDropdown(){
         if(recyclerView.getVisibility() == View.GONE){
@@ -59,7 +77,6 @@ public class pref_fragment extends Fragment {
         recyclerView2.setVisibility(View.GONE);
 
     }
-
     @OnClick(R.id.dropdown2)
     void showDropdown2(){
         if(recyclerView2.getVisibility() == View.GONE){
@@ -91,64 +108,27 @@ public class pref_fragment extends Fragment {
                     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
                         String dateresult = i2+"-"+(i1+1)+"-"+i;
                         textDropDown3.setText(dateresult.toString());
-
                         Log.d("PIGU",i2+ "-" +(i1+1)+ "-" +i);
-
-
                     }
                 },year,month,day);
                 datePickerDialog.show();
 
     }
 
-
-
-
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = getLayoutInflater().inflate(R.layout.preference_fragment, container, false);
         ButterKnife.bind(this,view);
-//        date = view.findViewById(R.id.etDate);
-//        date.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Calendar calendar = Calendar.getInstance();
-//                final int year = calendar.get(Calendar.YEAR);
-//                final int month = calendar.get(Calendar.MONTH);
-//                final int day = calendar.get(Calendar.DAY_OF_MONTH);
-//                datePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
-//                    @Override
-//                    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-//                        String dateresult = i2+"-"+(i1+1)+"-"+i;
-//                        date.setText(dateresult.toString());
-//
-//                        Log.d("PIGU",i2+ "-" +(i1+1)+ "-" +i);
-//
-//
-//                    }
-//
-//
-//                },year,month,day);
-//                datePickerDialog.show();
-//
-//
-//            }
-//        });
-//
-//        Spinner ddlpax = view.findViewById(R.id.spinner1);
-//        Spinner ddlActivityIntensity = view.findViewById(R.id.spinner2);
-//        String[] numberOfPax = new String[]{"1-2", "3-4", "4-5"," > 6"};
-//        String[] activityIntensityList = new String[]{"1","2","3","4"};
-//        ArrayAdapter<String> numberOfPaxAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, numberOfPax);
-//        ArrayAdapter<String> activityIntensityAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, activityIntensityList);
-//        ddlpax.setAdapter(numberOfPaxAdapter);
-//        ddlActivityIntensity.setAdapter(activityIntensityAdapter);
+        initActionBar();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         initIntensityData();
         initRecycleView();
         initNumberOfPaxData();
         initRecycleView2();
+
         return view;
     }
 
@@ -178,4 +158,17 @@ public class pref_fragment extends Fragment {
         recyclerView2.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
+    public void initActionBar()
+    {
+        actionbar = ((AppCompatActivity)getActivity()).getSupportActionBar();
+        textview = new TextView(getContext());
+        layoutparams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        textview.setLayoutParams(layoutparams);
+        textview.setText("Preference");
+        textview.setTextColor(Color.BLACK);
+        textview.setGravity(Gravity.CENTER);
+        textview.setTextSize(20);
+        actionbar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        actionbar.setCustomView(textview);
+    }
 }

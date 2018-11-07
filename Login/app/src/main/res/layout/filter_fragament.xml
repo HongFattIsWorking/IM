@@ -1,148 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/perfrenceroot"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TableLayout
-        android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/mono_blue_layout"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/headertxt"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:stretchColumns="2"
-        android:layout_marginBottom="5dp"
-        >
-        <TableRow
-            android:layout_marginBottom="5dp">
-            <TextView
-                android:id="@+id/tvRating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Rating"
-                android:padding="10dp"
-                android:textSize="20sp"/>
-            <RadioGroup
-                android:id="@+id/rgFilterRate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+        android:text="Sort According to:"
+        android:textSize="25sp"
+        android:textColor="@color/greyScale"/>
 
-                <RadioButton
-                    android:id="@+id/rbAsc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ascending"
-                    android:checked="true" />
-
-                <RadioButton
-                    android:id="@+id/rbDesc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Descending" />
-
-            </RadioGroup>
-        </TableRow>
-        <TableRow
-            android:layout_marginBottom="5dp">
-            <TextView
-                android:id="@+id/tvPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Price"
-                android:textSize="20sp" />
-            <RadioGroup
-                android:id="@+id/rgFilterPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/rbPriceAsc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ascending"
-                    android:checked="true" />
-
-                <RadioButton
-                    android:id="@+id/rbPriceDesc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Descending" />
-            </RadioGroup>
-        </TableRow>
-        <TableRow
-            android:layout_marginBottom="5dp">
-            <TextView
-                android:id="@+id/tvNumOfPax"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Number of pax"
-                android:textSize="20sp"
-               />
-            <Spinner
-                android:id="@+id/spinner1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@android:drawable/btn_dropdown"
-                android:dropDownWidth="match_parent"
-                android:spinnerMode="dropdown" />
-        </TableRow>
-        <TableRow
-            android:layout_marginBottom="5dp">
-            <TextView
-                android:id="@+id/tvActivityIntensity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Activity Intensity"
-                android:textSize="20sp"
-                />
-            <Spinner
-                android:id="@+id/spinner2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@android:drawable/btn_dropdown"
-                android:spinnerMode="dropdown"/>
-
-        </TableRow>
-        <TableRow
-            android:layout_marginBottom="5dp">
-            <TextView
-                android:id="@+id/tvBudget"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Budget"
-                android:textSize="20sp"
-                />
-            <EditText
-                android:id="@+id/etBudget"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="Enter Budget per pax"
-                android:inputType="number"
-                />
-
-        </TableRow>
-
-            <RadioGroup
-                android:id="@+id/rgFilterTripType"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/rbFull"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Full Day"
-                    android:checked="true" />
-
-                <RadioButton
-                    android:id="@+id/rbHalf"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Half Day" />
-
-            </RadioGroup>
-
-    </TableLayout>
-    <Button
-        android:layout_width="match_parent"
+    <TextView
+        android:padding="10dp"
+        android:id="@+id/tvPrice"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Price : "
+        android:textColor="@color/greyScale"
+        android:textSize="25sp"
+        app:layout_constraintTop_toBottomOf="@+id/headertxt"
+        app:layout_constraintBottom_toTopOf="@id/tvNoP"
         />
-</RelativeLayout>
+
+    <RadioGroup
+        android:id="@+id/rgFilterRate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toRightOf="@id/tvPrice"
+        app:layout_constraintTop_toBottomOf="@id/headertxt">
+
+        <RadioButton
+            android:id="@+id/rbAsc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ascending"
+            android:textColor="@color/greyScale"
+            android:textSize="25sp"
+            android:checked="true" />
+
+        <RadioButton
+            android:id="@+id/rbDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Descending"
+            android:textColor="@color/greyScale"
+            android:textSize="25sp"/>
+
+    </RadioGroup>
+    <TextView
+        android:padding="10dp"
+        android:id="@+id/tvNoP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Number of pax:"
+        android:textColor="@color/greyScale"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@id/rgFilterRate"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/dropdown1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="water event 1"
+        android:textSize="25sp"
+        android:backgroundTint="@color/testcolor"
+        android:drawableEnd="@drawable/downcarrot"
+        android:drawableTint="@color/iconColor"
+        android:background="@drawable/dropdownborder_style"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:layout_marginEnd="5dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        app:layout_constraintLeft_toRightOf="@+id/tvNoP"
+        app:layout_constraintTop_toBottomOf="@+id/tvNoP"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <TextView
+        android:padding="10dp"
+        android:id="@+id/tvIntensity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Intensity Level:"
+        android:textColor="@color/greyScale"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@+id/dropdown1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/dropdown2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="water event 1"
+        android:textSize="25sp"
+        android:backgroundTint="@color/testcolor"
+        android:drawableEnd="@drawable/downcarrot"
+        android:drawableTint="@color/iconColor"
+        android:background="@drawable/dropdownborder_style"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:layout_marginEnd="5dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        app:layout_constraintTop_toBottomOf="@+id/tvIntensity"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <CheckBox
+        android:id="@+id/cbHalf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Half Day"
+        android:textColor="@color/greyScale"
+        android:textSize="25dp"
+        android:checked="true"
+        app:layout_constraintTop_toBottomOf="@id/dropdown2"
+        app:layout_constraintRight_toLeftOf="@id/cbFull"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Duration(Default is Both):"/>
+
+
+    <CheckBox
+        android:id="@+id/cbFull"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Full Day"
+        android:textColor="@color/greyScale"
+        android:textSize="25dp"
+        android:checked="true"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/cbHalf"
+        app:layout_constraintTop_toBottomOf="@id/dropdown2"/>
+
+    <TextView
+        android:id="@+id/btnApplyFilter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/cbFull"
+        android:background="@drawable/round_text_style"
+        android:backgroundTint="@color/buttonGreen"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:padding="15dp"
+        android:text="Apply Filter"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycleview1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dropdown1"
+        android:layout_marginRight="5dp"
+        android:visibility="gone"
+        ></android.support.v7.widget.RecyclerView>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycleview2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dropdown2"
+        android:layout_marginRight="5dp"
+        android:visibility="gone"
+        ></android.support.v7.widget.RecyclerView>
+
+
+</android.support.constraint.ConstraintLayout>

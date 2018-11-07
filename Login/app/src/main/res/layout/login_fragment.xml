@@ -5,9 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp">
-
-
-
     <EditText
         android:layout_marginTop="10dp"
         android:layout_marginEnd="15dp"
@@ -56,19 +53,9 @@
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
         android:backgroundTint="@color/buttonGreen"/>
-    <Button
 
-        android:id="@+id/btnSignUp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Sign Up"
-        android:textSize="20sp"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:textColor="@color/colorWhite"
-        android:background="@drawable/round_text_style"
-        android:backgroundTint="@color/buttonGreen"/>
+
+
     <TextView
         android:id="@+id/tvForgetPw"
         android:layout_width="180dp"
@@ -78,5 +65,12 @@
         android:textColor="@color/colorWhite"
         android:gravity="center"
         android:layout_gravity="right"/>
+
+    <ProgressBar
+        android:id="@+id/loadingProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity = "center"
+        android:visibility="invisible" />
 
 </LinearLayout>
