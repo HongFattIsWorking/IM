@@ -36,7 +36,7 @@
         android:ems="10"
         android:padding="15dp"
         android:background="@drawable/textbox_style"
-        android:inputType="textPassword"
+        android:inputType="text"
         android:hint="Name"
         android:drawableLeft="@drawable/ic_lock_black_24dp"
         android:drawableTint="@color/greyScale"

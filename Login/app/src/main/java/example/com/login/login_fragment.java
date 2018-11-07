@@ -1,9 +1,11 @@
 package example.com.login;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -11,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +30,7 @@ import butterknife.OnClick;
 public class login_fragment extends Fragment implements OnTaskCompleted{
     String msgType;
     JSONObject jsonObject;
+
     // Set host address of the Web Server
     public static final String HOST = "pigu.leongwenqing.com";
     // Set virtual directory of the host website
@@ -40,17 +45,29 @@ public class login_fragment extends Fragment implements OnTaskCompleted{
     @BindView(R.id.tvForgetPw)
     TextView tvForget;
 
+
+    @BindView(R.id.loadingProgress)
+    ProgressBar pb;
+
     @OnClick(R.id.btnSubmit)
     void signUP (){
-        //  PopUpDiagram dialog = new PopUpDiagram(getContext());
-        //dialog.displayDialog("nimama","nimama nipapa");
-        String jsonString = convertToJSON();
-        // call AsynTask to perform network operation on separate threadHttpAsyncTask task = new HttpAsyncTask(this);
-        //HttpAsyncTask task = new HttpAsyncTask(login_fragment.this);
-        //task.execute("https://" + HOST + "/"  + "v1/user/login", jsonString);
-        Intent intent = new Intent(getContext(), Index.class);
-        startActivity(intent);
+
+        if(etEmail.getText().length() >= 1 && etPassword.getText().length() >= 1){
+            String jsonString = convertToJSON();
+            HttpAsyncTask task = new HttpAsyncTask(login_fragment.this);
+            task.execute("https://" + HOST + "/"  + "v1/user/login", jsonString);
+            pb.setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            //popup dialog
+        }
+
+//        Intent intent = new Intent(getContext(), Index.class);
+//        startActivity(intent);
+
     }
+
 
     @Nullable
     @Override
@@ -100,15 +117,26 @@ public class login_fragment extends Fragment implements OnTaskCompleted{
     }
     @Override
     public void onTaskCompleted(String response) {
-
         retrieveFromJSON(response);
+        pb.setVisibility(View.GONE);
         try {
             if(jsonObject.getString("token")!= null){
+
                 Intent intent = new Intent(getContext(), Index.class);
+                SharedPreferences myPrefs = getActivity().getSharedPreferences("myPrefs", getActivity().MODE_PRIVATE);
+                SharedPreferences.Editor editor = myPrefs.edit();
+                editor.putString("token", jsonObject.getString("token"));
+                editor.commit();
                 startActivity(intent);
+
+            }
+            else
+            {
+                //pop up login failed
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
+
 }

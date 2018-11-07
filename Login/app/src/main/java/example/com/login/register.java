@@ -38,6 +38,8 @@ public class register extends AppCompatActivity implements OnTaskCompleted {
     @BindView(R.id.txtpassword)
     EditText etPassword;
 
+
+
    // HTTP POST METHODS - CONVERT DATA TO JSON
     public String convertToJSON() {
         JSONStringer jsonText = new JSONStringer();
@@ -63,18 +65,6 @@ public class register extends AppCompatActivity implements OnTaskCompleted {
         }
     }
 
-    @OnClick(R.id.btnRegister)
-    public void onRegisterClicked(View v) {
-
-
-        // create data in JSON format
-        String jsonString = convertToJSON();
-        // call AsynTask to perform network operation on separate threadHttpAsyncTask task = new HttpAsyncTask(this);
-        HttpAsyncTask task = new HttpAsyncTask(this);
-        task.execute("https://" + HOST + "/"  + "v1/user/register", jsonString);
-        Toast.makeText(this, "Profile created \n successfully!", Toast.LENGTH_LONG).show();
-        // finish();
-    }
     @Override
     public void onTaskCompleted(String response) {
         retrieveFromJSON(response);

@@ -3,46 +3,19 @@ package example.com.login;
 public class TripHistory {
 
     String id;
-    String activity;
-    String preference;
-    String activity_Order;
     String userId;
     String budget;
-    String meal_pref;
-    String Meal_comments;
+    String intensity;
     String type;
+    String tripType;
+    String pax;
     String date;
-
     public String getId() {
         return id;
     }
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getActivity() {
-        return activity;
-    }
-
-    public void setActivity(String activity) {
-        this.activity = activity;
-    }
-
-    public String getPreference() {
-        return preference;
-    }
-
-    public void setPreference(String preference) {
-        this.preference = preference;
-    }
-
-    public String getActivity_Order() {
-        return activity_Order;
-    }
-
-    public void setActivity_Order(String activity_Order) {
-        this.activity_Order = activity_Order;
     }
 
     public String getUserId() {
@@ -61,20 +34,12 @@ public class TripHistory {
         this.budget = budget;
     }
 
-    public String getMeal_pref() {
-        return meal_pref;
+    public String getIntensity() {
+        return intensity;
     }
 
-    public void setMeal_pref(String meal_pref) {
-        this.meal_pref = meal_pref;
-    }
-
-    public String getMeal_comments() {
-        return Meal_comments;
-    }
-
-    public void setMeal_comments(String meal_comments) {
-        Meal_comments = meal_comments;
+    public void setIntensity(String intensity) {
+        this.intensity = intensity;
     }
 
     public String getType() {
@@ -85,6 +50,22 @@ public class TripHistory {
         this.type = type;
     }
 
+    public String getTripType() {
+        return tripType;
+    }
+
+    public void setTripType(String tripType) {
+        this.tripType = tripType;
+    }
+
+    public String getPax() {
+        return pax;
+    }
+
+    public void setPax(String pax) {
+        this.pax = pax;
+    }
+
     public String getDate() {
         return date;
     }
@@ -92,4 +73,6 @@ public class TripHistory {
     public void setDate(String date) {
         this.date = date;
     }
+
+
 }

@@ -38,10 +38,11 @@ public class SharedTripRecycleAdapter extends RecyclerView.Adapter<SharedTripRec
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.numberOFPax.setText("4 - 5");
-        holder.budgettxt.setText(shareTripsData.get(position).budget);
+        holder.numberOFPax.setText(shareTripsData.get(position).pax);
+        holder.budgettxt.setText("$ " + shareTripsData.get(position).budget);
         holder.intensityText.setText("wet sport activity");
-        holder.tripDuration.setText("Full Day");
+        holder.tripDuration.setText(shareTripsData.get(position).tripType);
+
         holder.sharedTripRoot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

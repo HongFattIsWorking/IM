@@ -46,6 +46,8 @@ public class TripsHistory_fragment extends Fragment implements OnTaskCompleted {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
         View view =  getLayoutInflater().inflate(R.layout.tripshistory_fragment,container,false);
         ButterKnife.bind(this,view);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(false);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
 
         // call AsynTask to perform network operation on separate threadHttpAsyncTask task = new HttpAsyncTask(this);
@@ -77,6 +79,7 @@ public class TripsHistory_fragment extends Fragment implements OnTaskCompleted {
     @Override
     public void onTaskCompleted(String response) {
         retrieveFromJSON(response);
+        String dayType = "Full day";
         try {
             for(int i=0;i<jsonObject.length();i++)
             {
@@ -84,14 +87,14 @@ public class TripsHistory_fragment extends Fragment implements OnTaskCompleted {
                 JSONObject jsonObject1 = null;
                 jsonObject1 = jsonObject.getJSONObject(i);
                 st.setId(jsonObject1.optString("id"));
-                st.setActivity(jsonObject1.optString("activity"));
-                st.setPreference(jsonObject1.optString("preference"));
-                st.setActivity_Order(jsonObject1.optString("activity_order"));
                 st.setUserId(jsonObject1.optString("userid"));
                 st.setBudget(jsonObject1.optString("budget"));
-                st.setMeal_pref(jsonObject1.optString("meal_preference"));
-                st.setMeal_comments(jsonObject1.optString("meal_comments"));
+                st.setIntensity(jsonObject1.optString("intensity"));
                 st.setType(jsonObject1.optString("type"));
+                if(jsonObject1.optString("fullday").equals("0"))
+                    dayType = "Half Day";
+                st.setTripType(dayType);
+                st.setPax(jsonObject1.optString("pax"));
                 st.setDate(jsonObject1.optString("date"));
 
                 tripshistory.add(st);

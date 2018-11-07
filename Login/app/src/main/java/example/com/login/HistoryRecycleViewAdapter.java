@@ -39,7 +39,7 @@ public class HistoryRecycleViewAdapter extends RecyclerView.Adapter<HistoryRecyc
     public void onBindViewHolder(final ViewHolder holder, final int position) {
 
         holder.tripID.setText(tripsHistoryData.get(position).userId);
-        holder.tripType.setText(tripsHistoryData.get(position).budget);
+        holder.tripType.setText(tripsHistoryData.get(position).tripType);
         holder.date.setText(tripsHistoryData.get(position).date);
 
         holder.historyTrip.setOnClickListener(new View.OnClickListener() {
