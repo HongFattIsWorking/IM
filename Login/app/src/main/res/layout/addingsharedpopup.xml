@@ -2,15 +2,24 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="250dp"
     android:layout_height="wrap_content"
+    android:background="@drawable/popupcalanderdialog"
+    android:backgroundTint="@color/greyScaleLighter"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
         android:id="@+id/question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="5dp"
         android:text="When would you like the trip to be on?"
         android:textSize="23sp"
         android:textAlignment="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/greyScale"
+        app:layout_constraintTop_toBottomOf="@+id/question"/>
 
     <TextView
         android:layout_margin="20dp"
@@ -20,10 +29,12 @@
         android:hint="Select date"
         android:textSize="25sp"
         android:background="@drawable/dropdownborder_style"
-        android:padding="10dp"
+        android:padding="5dp"
         android:backgroundTint="@color/testcolor"
         android:textAlignment="center"
         android:drawableEnd="@drawable/calendar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/question"/>
 
     <TextView

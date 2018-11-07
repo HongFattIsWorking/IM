@@ -1,19 +1,14 @@
 package example.com.login;
 
-import android.app.AlertDialog;
-import android.app.DatePickerDialog;
 import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.DatePicker;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,10 +20,7 @@ public class SharedTripRecycleAdapter extends RecyclerView.Adapter<SharedTripRec
     Context context;
 
 
-
-
-
-    public SharedTripRecycleAdapter(Context context,ArrayList<ShareTrips> shareTripsData){
+    public SharedTripRecycleAdapter(Context context, ArrayList<ShareTrips> shareTripsData) {
         this.shareTripsData = shareTripsData;
         this.context = context;
     }
@@ -36,7 +28,7 @@ public class SharedTripRecycleAdapter extends RecyclerView.Adapter<SharedTripRec
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.shared_trip_card_layout,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.shared_trip_card_layout, parent, false);
         SharedTripRecycleAdapter.ViewHolder holder = new SharedTripRecycleAdapter.ViewHolder(view);
         return holder;
     }
@@ -56,7 +48,7 @@ public class SharedTripRecycleAdapter extends RecyclerView.Adapter<SharedTripRec
         return shareTripsData.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.numberofpaxtext)
         TextView numberOFPax;
@@ -73,10 +65,17 @@ public class SharedTripRecycleAdapter extends RecyclerView.Adapter<SharedTripRec
         @BindView(R.id.tripdurationtext)
         TextView tripDuration;
 
+        CustomDialogForDate customDialogForDate = new CustomDialogForDate(context);
+
+        @OnClick(R.id.sharedtriproot)
+        void showDialog() {
+            customDialogForDate.show();
+        }
 
         public ViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this,itemView);
+            ButterKnife.bind(this, itemView);
+
         }
     }
 
