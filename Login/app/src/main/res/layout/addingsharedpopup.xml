@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="250dp"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -13,13 +13,13 @@
         android:textAlignment="center"/>
 
     <TextView
+        android:layout_margin="20dp"
         android:id="@+id/dateselector"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Click to select date"
+        android:hint="Select date"
         android:textSize="25sp"
         android:background="@drawable/dropdownborder_style"
-        android:layout_marginEnd="5dp"
         android:padding="10dp"
         android:backgroundTint="@color/testcolor"
         android:textAlignment="center"
@@ -32,6 +32,7 @@
         android:layout_height="wrap_content"
         android:text="Add"
         android:textSize="30sp"
+        android:padding="10dp"
         app:layout_constraintTop_toBottomOf="@+id/dateselector"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/canceltxt"/>
@@ -42,6 +43,7 @@
         android:layout_height="wrap_content"
         android:textSize="30sp"
         android:text="cancel"
+        android:padding="10dp"
         app:layout_constraintTop_toBottomOf="@+id/dateselector"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/addtxt"/>
